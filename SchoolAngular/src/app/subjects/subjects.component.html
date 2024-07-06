@@ -1,0 +1,26 @@
+<div class="container">
+  <h3>Изучаемые предметы</h3>
+
+    <table class="table table-stripped table-hover table-sm">
+    <thead class="table-light">
+    <tr>
+      <th>Название предмета</th>
+      <th>Описание</th>
+      <th style="text-align: right"><button (click) = "createSubject()" class="btn btn-outline-primary btn-sm">Добавить новый предмет</button></th>
+    </tr>
+    </thead>
+    <tbody>
+    @for (subject of subjects; track $index) {
+    <tr>
+      <td> {{ subject.name }} </td>
+      <td> {{ subject.description }} </td>
+
+        <td style="text-align: right">
+          <button (click) = "updateSubject(subject.id)" class="btn btn-outline-info btn-sm">Редактировать</button>
+          <button (click) = "deleteSubject(subject.id)" class="btn btn-outline-danger btn-sm ms-1">Удалить</button>
+        </td>
+      </tr>
+    }
+    </tbody>
+  </table>
+</div>

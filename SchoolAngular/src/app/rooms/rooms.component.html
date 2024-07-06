@@ -1,0 +1,27 @@
+<div class="container">
+<h3>Кабинеты школы</h3>
+    <table class="table table-stripped table-hover table-sm">
+        <thead class="table-light">
+        <tr>
+            <th>Адресс</th>
+            <th>Номер кабинета</th>
+            <th>Этаж</th>
+            <th style="text-align: right"><button (click) = "createRoom()" class="btn btn-outline-primary btn-sm">Добавить новый кабинет</button></th>
+        </tr>
+        </thead>
+        <tbody>
+        @for (room of rooms; track $index) {
+        <tr>
+          <td> {{ room.address }} </td>
+      <td> {{ room.number }} </td>
+      <td> {{ room.floor }} </td>
+
+        <td style="text-align: right">
+          <button (click) = "updateRoom(room.id)" class="btn btn-outline-info btn-sm">Редактировать</button>
+          <button (click) = "deleteRoom(room.id)" class="btn btn-outline-danger btn-sm ms-1">Удалить</button>
+        </td>
+      </tr>
+        }
+        </tbody>
+    </table>
+</div>

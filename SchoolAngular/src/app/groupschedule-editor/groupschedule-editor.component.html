@@ -1,0 +1,55 @@
+<div class="container">
+  <h6 class='text-center pt-2 pb-2' style="background-color: #f2f5ff;" >Расписание занятий группы "{{groupName}}"</h6>
+
+  <table class="table table-stripped table-hover table-sm">
+    <thead class="table-light">
+      <tr>
+        <th style="width:40%">Время занятия</th>
+        <th style="width:40%">Комната</th>
+        <th style="text-align: right">@if(relatedGroupId > 0){<button (click)="addGroupSchedule()" class="btn btn-outline-primary btn-sm">Добавить занятие</button>}</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(groupSchedule of groupSchedules; track $index){
+        <tr>
+          <ng-template [ngTemplateOutlet]="loadTemplate(groupSchedule)" [ngTemplateOutletContext]="{ $implicit: groupSchedule}">
+          </ng-template>
+        </tr>
+      }
+    </tbody>
+  </table>
+  <div>{{statusMessage}}</div>
+
+
+  <!--шаблон для чтения-->
+  <ng-template #readOnlyTemplate let-room>
+    <td>{{room.startTime | date:'день: dd MMM yyyy время: HH:mm'}}</td>
+    <td>{{getDescById(room.roomId)}}</td>
+    <td style="text-align: right">
+      <button (click)="editUser(room)" class="btn btn-outline-info btn-sm">Изменить</button>
+      <button (click)="deleteGroupSchedule(room)" class="btn btn-outline-danger btn-sm ms-1">Удалить</button>
+    </td>
+  </ng-template>
+
+  <!--шаблон для редактирования-->
+  <ng-template #editTemplate>
+    <td>
+      <input type="datetime-local" [(ngModel)]="editedGroupSchedule.startTime" class="form-control form-control-sm" />
+    </td>
+    <td>
+      <!--<input [(ngModel)]="editedGroupSchedule.roomId" class="form-control form-control-sm" />-->
+      <select class="form-control form-control-sm" id="roomId" name="roomId" [(ngModel)]="editedGroupSchedule.roomId">
+        @for(room of rooms; track $index){
+        <option [value]="room.id">
+        {{getDescById(room.id)}}
+        </option>
+        }
+      </select>
+    </td>
+    <td style="text-align: right">
+      <button (click)="saveGroupSchedule()" class="btn btn-outline-info btn-sm">Сохранить</button>
+      <button (click)="cancel()" class="btn btn-outline-danger btn-sm ms-1">Отмена</button>
+    </td>
+  </ng-template>
+
+</div>

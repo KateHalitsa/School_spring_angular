@@ -1,0 +1,51 @@
+<div class="container-fluid p-0">
+  <h6 class='text-center mb-2 p-1' style="background-color: #f2f5ff;" >Список групп ученика</h6>
+
+  <div class="ms-3 me-3 mb-3">
+    <table class="table table-stripped table-hover table-sm">
+      <thead class="table-light">
+      <tr>
+        <th class="hstack">
+          Группа
+          @if(currentStudentId > 0){<button (click)="addStudentGroup()" class="btn btn-outline-primary btn-sm ms-auto">Зарегистрироваться в учебную группу</button>}
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+        @for(studentGroup of studentGroups; track $index){
+          <tr>
+            <ng-template [ngTemplateOutlet]="loadTemplate(studentGroup)" [ngTemplateOutletContext]="{ $implicit: studentGroup}">
+            </ng-template>
+          </tr>
+        }
+      </tbody>
+    </table>
+    <div>{{statusMessage}}</div>
+  </div>
+
+  <!--шаблон для чтения-->
+  <ng-template #readOnlyTemplate let-studentGroup>
+    <td class="hstack">
+      {{getGroupDescriptionById(studentGroup.groupId)}}
+     <!-- <button (click)="editStudentGroup(studentGroup)" class="btn btn-outline-info btn-sm">Изменить</button> -->
+      <button (click)="deleteStudentGroup(studentGroup)" class="btn btn-outline-danger btn-sm ms-auto">Удалить</button>
+    </td>
+  </ng-template>
+
+  <!--шаблон для редактирования-->
+  <ng-template #editTemplate>
+    <td class="hstack">
+      <select class="form-control form-control-sm me-2" id="groupId" name="groupId" [(ngModel)]="editedStudentGroup.groupId">
+        @for(group of notUsedGroups(); track $index){
+          <option [value]="group.id">
+            {{getGroupDescription(group)}}
+          </option>
+        }
+      </select>
+      <button (click)="saveStudentGroup()" class="btn btn-outline-info btn-sm ms-auto">Сохранить</button>
+      <button (click)="cancel()" class="btn btn-outline-danger btn-sm ms-1">Отмена</button>
+    </td>
+  </ng-template>
+
+</div>
+

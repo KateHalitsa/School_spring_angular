@@ -1,0 +1,30 @@
+<div class="container">
+
+
+      <h5 class='text-center mt-2'>Учебный класс</h5>
+
+      <div class="row mb-1">
+        <label class="col-sm-2 col-form-label col-form-label-sm text-end" for="address">Адрес:</label>
+        <div class="col-sm-10 g-0">
+          <input type="text" class="form-control form-control-sm" id="address" name="address" [(ngModel)]="room.address" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="row mb-1">
+        <label class="col-sm-2 col-form-label col-form-label-sm text-end" for="number">Кабинет:</label>
+        <div class="col-sm-10 g-0">
+          <input type="text" class="form-control form-control-sm" id="number" name="number" [(ngModel)]="room.number" autocomplete="off">
+        </div>
+      </div>
+          <div class="row mb-1">
+              <label class="col-sm-2 col-form-label col-form-label-sm text-end" for="floor">Этаж:</label>
+              <div class="col-sm-10 g-0">
+                  <input type="text" class="form-control form-control-sm" id="floor" name="floor" [(ngModel)]="room.floor" autocomplete="off">
+              </div>
+          </div>
+        <div class="row justify-content-end mt-2 mb-3">
+          <button class="btn btn-outline-success col-sm-auto btn-sm" type="button" (click)="onSubmit(false)">Применить</button>
+          <button class="btn btn-outline-success col-sm-auto btn-sm ms-2" type="button" (click)="onSubmit(true)">Сохранить</button>
+          <button class="btn btn-outline-danger col-sm-auto btn-sm ms-2" type="button" (click)="redirectToRoomList()">Закрыть</button>
+        </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="container-fluid p-0 m-0">
+  <h6 class='text-center mb-2 p-1' style="background-color: #f2f5ff;">Список предметов</h6>
+
+  <div class="ms-3 me-3 mb-3">
+    <table class="table table-stripped table-hover table-sm">
+      <thead class="table-light">
+      <tr>
+        <th style="width:70%">Предмет</th>
+        <th style="text-align: right">@if(currentTeacherId > 0){<button (click)="addTeacherSubject()" class="btn btn-outline-primary btn-sm">Добавить предмет</button>}</th>
+      </tr>
+      </thead>
+      <tbody>
+        @for(teacherSubject of teacherSubjects; track $index){
+          <tr>
+            <ng-template [ngTemplateOutlet]="loadTemplate(teacherSubject)" [ngTemplateOutletContext]="{ $implicit: teacherSubject}">
+            </ng-template>
+          </tr>
+        }
+      </tbody>
+    </table>
+    <div>{{statusMessage}}</div>
+  </div>
+
+  <!--шаблон для чтения-->
+  <ng-template #readOnlyTemplate let-teacherSubject>
+    <td>{{getSubjectDescription(teacherSubject.subjectId)}}</td>
+    <td style="text-align: right">
+     <!-- <button (click)="editTeacherSubject(teacherSubject)" class="btn btn-outline-info btn-sm">Изменить</button> -->
+      <button (click)="deleteTeacherSubject(teacherSubject)" class="btn btn-outline-danger btn-sm ms-1">Удалить</button>
+    </td>
+  </ng-template>
+
+  <!--шаблон для редактирования-->
+  <ng-template #editTemplate>
+    <td>
+      <select class="form-control form-control-sm" id="subjectId" name="subjectId" [(ngModel)]="editedTeacherSubject.subjectId">
+        @for(subject of notUsedSubjects(); track $index){
+          <option [value]="subject.id">
+            {{subject.name}}
+          </option>
+        }
+      </select>
+
+    </td>
+    <td style="text-align: right">
+      <button (click)="saveTeacherSubject()" class="btn btn-outline-info btn-sm">Сохранить</button>
+      <button (click)="cancel()" class="btn btn-outline-danger btn-sm ms-1">Отмена</button>
+    </td>
+  </ng-template>
+</div>
+
+

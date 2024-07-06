@@ -1,0 +1,21 @@
+<div class="container-fluid" >
+  <div class="row mt-1">
+    <div class="list-group list-group-flush col-2 ms-1 small">
+      <a routerLink="private" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="list-group-item list-group-item-action">
+        Личная информация
+      </a>
+      <a routerLink="account" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"  class="list-group-item list-group-item-action">
+        Акаунт
+      </a>
+      <a routerLink="groups" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"  class="list-group-item list-group-item-action">
+        Записаться в группу
+      </a>
+      <a routerLink="schedule" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"  class="list-group-item list-group-item-action">
+        Расписание
+      </a>
+    </div>
+    <div class="col-9 shadow-sm ps-0 pe-0" style="background-color: #fcfcfc; height:min-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

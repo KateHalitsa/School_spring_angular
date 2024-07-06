@@ -1,0 +1,30 @@
+<div class="container">
+  <h5 class="text-center mt-1">Список учебных групп</h5>
+  <table class="table table-stripped table-hover table-sm">
+    <thead class="table-light">
+      <tr>
+        <th>Имя группы</th>
+        <th>Возраст</th>
+        <th>Год</th>
+        <th>Предмет</th>
+        <th>Учитель</th>
+        <th style="text-align: right"><button (click) = "createGroup()" class="btn btn-outline-primary btn-sm">Добавить новую группу</button></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (group of groups; track $index) {
+      <tr>
+        <td> {{ group.name }} </td>
+        <td> {{ group.age }} </td>
+        <td> {{ group.schoolYear }} </td>
+        <td> {{ group.subjectName }} </td>
+        <td> {{ group.teacherName }} </td>
+        <td style="text-align: right">
+          <button (click) = "updateGroup(group.id)" class="btn btn-outline-info btn-sm">Редактировать</button>
+          <button (click) = "deleteGroup(group.id)" class="btn btn-outline-danger btn-sm ms-1">Удалить</button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

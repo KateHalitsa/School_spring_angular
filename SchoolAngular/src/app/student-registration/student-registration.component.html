@@ -1,0 +1,10 @@
+<div class="container shadow-sm ps-0 pe-0 pb-1" style="background-color: #fcfcfc">
+  <h6 class='text-center p-1' style="background-color: #f2f5ff;">Регистрация ученика</h6>
+  <app-user-update [userId]='0' [showButtons]="false"></app-user-update>
+  <app-student-update [studentId]='0' [showButtons]="false"></app-student-update>
+  <div class="row justify-content-end mt-2 mb-3 me-3">
+    <button class="btn btn-outline-success col-sm-auto btn-sm" type="button" (click)="onSubmit()" >Сохранить</button>
+  </div>
+</div>
+
+

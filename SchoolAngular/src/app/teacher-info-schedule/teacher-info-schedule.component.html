@@ -1,0 +1,38 @@
+<h6 class='text-center mb-2 p-1' style="background-color: #f2f5ff;">Рaсписание учителя</h6>
+
+    @for (schedule of schedules; track $index) {
+      <div class="card text-bg-light mb-3 ms-3 me-3 small" >
+        <div class="card-header p-1 ps-2 hstack">
+          <div>
+            {{ schedule.startTime| date:'dd MMM yyyy HH:mm' }}
+          </div>
+          <div class="ms-auto me-1">
+            <a routerLink="attendance/{{ schedule.id }}" class="link-infoprimary">Присутствие учеников</a>
+            <span title="Присуствовали {{schedule.attendanceCount}} из {{schedule.studentCount}} учеников">
+              (
+                @if(schedule.attendanceCount < schedule.studentCount){
+                  <span class="text-danger">{{schedule.attendanceCount}}</span>
+                }
+                @else
+                {
+                  {{schedule.attendanceCount}}
+                }
+                / {{schedule.studentCount}}
+              )
+            </span>
+          </div>
+        </div>
+        <div class="card-body p-2 pt-1 ps-3">
+          <p class="card-text">
+            <span class="text-info">{{ schedule.roomAddress }}</span>
+            эт <span class="text-info">{{ schedule.roomFloor }}</span>
+            к <span class="text-info">{{ schedule.roomNumber }}</span>
+            предмет: <span class="text-info">{{ schedule.subjectName }}</span>
+            группа: <span class="text-info">{{ schedule.groupName }}</span>
+          </p>
+        </div>
+      </div>
+
+    }
+
+

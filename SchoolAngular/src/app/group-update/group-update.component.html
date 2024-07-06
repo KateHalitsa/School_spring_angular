@@ -1,0 +1,58 @@
+<div class="container">
+    <form>
+
+      <h5 class='text-center mt-2'>Учебная группа</h5>
+
+      <div class="row mb-1">
+        <label class="col-sm-2 col-form-label col-form-label-sm text-end" for="name">Имя:</label>
+        <div class="col-sm-10 g-0">
+          <input type="text" class="form-control form-control-sm" id="name" name="name" [(ngModel)]="group.name" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="row mb-1">
+        <label class="col-sm-2 col-form-label col-form-label-sm text-end" for="age">Возраст ученика:</label>
+        <div class="col-sm-1 g-0">
+          <input type="text" class="form-control form-control-sm" id="age" name="age" [(ngModel)]="group.age" autocomplete="off">
+        </div>
+
+        <label class="col-sm-5 col-form-label col-form-label-sm text-end" for="schoolYear">Учебный год:</label>
+        <div class="col-sm-1 g-0">
+          <input type="text" class="form-control form-control-sm" id="schoolYear" name="schoolYear" [(ngModel)]="group.schoolYear" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="row mb-1">
+        <label class="col-sm-2 col-form-label col-form-label-sm text-end" for="subjectId">Предмет:</label>
+        <div class="col-sm-4 g-0">
+          <!--<input type="text" class="form-control form-control-sm" id="subjectId" name="subjectId" [(ngModel)]="group.subjectId" autocomplete="off">-->
+          <select class="form-control form-control-sm" id="subjectId" name="subjectId" [(ngModel)]="group.subjectId">
+            @for(subject of subjects; track $index){
+            <option [value]="subject.id">
+            {{subject.name}}
+            </option>
+            }
+          </select>
+        </div>
+
+        <label class="col-sm-2 col-form-label col-form-label-sm text-end" for="teacherId">Учитель:</label>
+        <div class="col-sm-4 g-0">
+          <select class="form-control form-control-sm" id="teacherId" name="teacherId" [(ngModel)]="group.teacherId">
+            @for(teacher of teachers; track $index){
+              <option [value]="teacher.id">
+                {{teacher.name}}
+              </option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div class="row justify-content-end mt-2 mb-3">
+        <button class="btn btn-outline-success col-sm-auto btn-sm" type="button" (click)="onSubmit(false)">Применить</button>
+        <button class="btn btn-outline-success col-sm-auto btn-sm ms-2" type="button" (click)="onSubmit(true)">Сохранить</button>
+        <button class="btn btn-outline-danger col-sm-auto btn-sm ms-2" type="button" (click)="redirectToGroupList()">Закрыть</button>
+      </div>
+
+     </form>
+</div>
+<app-groupschedule-editor [groupId]="id" [groupName]="group.name" ></app-groupschedule-editor>

@@ -1,0 +1,32 @@
+<div class="container">
+    <form  (ngSubmit) = "onSubmit()" class="me-3">
+
+      <div class="row mb-1">
+        <label class="col-sm-2 col-form-label col-form-label-sm text-end" for="name">Имя:</label>
+        <div class="col-sm-10 g-0">
+          <input type="text" class="form-control form-control-sm" id="name" name="name" [(ngModel)]="teacher.name" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="row mb-1">
+        <label class="col-sm-2 col-form-label col-form-label-sm text-end" for="description">Описание:</label>
+        <div class="col-sm-10 g-0">
+          <input type="text" class="form-control form-control-sm col-sm-10" id="description" name="description" [(ngModel)]="teacher.description" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="row mb-1">
+        <label class="col-sm-2 col-form-label col-form-label-sm text-end" for="education">Образование:</label>
+        <div class="col-sm-10 g-0">
+          <textarea rows="3" class="form-control form-control-sm col-sm-10" id="education" name="education" [(ngModel)]="teacher.education" autocomplete="off"></textarea>
+        </div>
+      </div>
+
+      @if (showButtons) {
+      <div class="row justify-content-end mt-2 mb-3">
+        <button class="btn btn-outline-success col-sm-auto btn-sm" type="submit">Сохранить</button>
+      </div>
+      }
+
+     </form>
+</div>

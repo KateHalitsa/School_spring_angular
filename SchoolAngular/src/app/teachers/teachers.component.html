@@ -1,0 +1,21 @@
+<div class="container">
+  <h5 class="text-center mt-1">Список учителей</h5>
+  <table class="table table-stripped table-hover table-sm">
+    <thead class="table-light">
+      <tr>
+        <th>Имя</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (teacher of teachers; track $index) {
+      <tr>
+        <td> {{ teacher.name }} </td>
+        <td style="text-align: right">
+          <button (click) = "deleteTeacher(teacher.id)" class="btn btn-outline-danger btn-sm">Удалить</button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

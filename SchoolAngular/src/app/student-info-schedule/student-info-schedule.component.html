@@ -1,0 +1,27 @@
+<h6 class='text-center mb-2 p-1' style="background-color: #f2f5ff;">Рaсписание ученика</h6>
+
+@for (schedule of schedules; track $index) {
+  <div class="card text-bg-light mb-3 ms-3 me-3 small" >
+    <div class="card-header p-1 ps-2 hstack">
+      {{ schedule.startTime| date:'dd MMM yyyy HH:mm' }}
+      @if (isObsolete(schedule)){
+        @if(schedule.attendanceCount > 0){
+          <img class="ms-auto me-1" src="assets/done.png" height="24" width="24"  title="Посещенное занятие"/>
+        } @else {
+          <img class="ms-auto me-1" src="assets/no-access.png" height="24" width="24"  title="Пропущенное занятие"/>
+        }
+      }
+    </div>
+    <div class="card-body p-2 pt-1 ps-3">
+      <p class="card-text">
+        <span class="text-primary">{{ schedule.roomAddress }}</span>
+        эт <span class="text-primary">{{ schedule.roomFloor }}</span>
+        к <span class="text-primary">{{ schedule.roomNumber }}</span>
+        группа: <span class="text-primary">{{ schedule.groupName }}</span>
+        предмет: <span class="text-primary">{{ schedule.subjectName }}</span>
+        учитель: <span class="text-primary">{{ schedule.teacherName }}</span>
+      </p>
+    </div>
+  </div>
+
+}
