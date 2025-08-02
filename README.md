@@ -1,5 +1,73 @@
 # Preschool Learning App
+
+The repository is a comprehensive preschool education management application built using Angular for the frontend and Spring for the backend. This full-stack project empowers administrators to manage schedules, teachers to monitor attendance, and students to sign up for classes and manage their information.
+
+### Key Features
+
+* **Role-Based Authentication**: Supports multiple user roles, including administrator, teacher, student, and guest. Each role has tailored access to various functionalities within the application.
+
+* **Administrator Dashboard**: Administrators can manage user accounts, view system statistics, and oversee overall application settings.
+
+* **Teacher Interface**: Teachers can monitor student attendance, manage class schedules, and communicate with students and parents.
+
+* **Student Portal**: Students can sign up for classes, track their attendance, and update their personal information.
+
+* **Guest Access**: Users without an account can view general information about the school, including its mission, values, and available programs.
+### Technologies Used
+
+* **Frontend**: Angular
+
+* **Backend**: Spring Framework
+
+* **Database**: SQL (with provided `preschool.sql` file for database schema)
+
+* **Authentication**: Spring Security for role-based access control
+### Getting Started
+
+To run this application locally:
+
+1. **Clone the Repository**:
+
+   ```bash
+   git clone https://github.com/KateHalitsa/School_spring_angular.git
+   ```
+
+
+
+2. **Set Up the Backend**:
+
+   * Navigate to the `springCurseWork` directory.
+
+   * Import the project into your IDE (e.g., IntelliJ IDEA, Eclipse).
+
+   * Configure your database connection settings in the `application.properties` file.
+
+   * Run the Spring Boot application.
+
+3. **Set Up the Frontend**:
+
+   * Navigate to the `SchoolAngular` directory.
+
+   * Install the necessary dependencies:
+
+     ```bash
+     npm install
+     ```
+
+   * Run the Angular development server:
+
+     ```bash
+     ng serve
+     ```
+
+   * Access the application at `http://localhost:4200`.
+### Database Setup
+
+The repository includes SQL files (`preschool.sql`, `preschool_old_1.sql`, `preschool_old_2.sql`, `preschool_old_3.sql`) containing database schemas and sample data. These can be imported into your SQL database to set up the necessary tables and initial data for the application.
+
+## Interface description
 Preschool education management app empowering administrators to manage schedules, teachers to monitor attendance, students to sign up for classes and manage their information.
+
 ### Login page
 There are 3 roles for logging in: administrator, teacher and student. You can also highlight the guest role, which is owned by each user who has not logged in to the system and who only has access to the "About School" and "Home" pages. To log in, you should click the "Login" button and you will be given the opportunity to log in.
 ![Login](docs/Login.png)
